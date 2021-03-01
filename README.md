@@ -1,7 +1,10 @@
 # Weeleza
 
 An solution crafted and tailored to enable the community deliver (Weeleza) their items of all kinds securely and in time.
-![alt text](screenshots/version_2.png)
+
+## Web Version
+![version_1 0](https://user-images.githubusercontent.com/12647392/109511344-fef2ed00-7ab3-11eb-9953-619cb7bb7d2f.png)
+
 ## RoadMap
 Still under development, more features will be included with time to come.
 
