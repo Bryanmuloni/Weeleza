@@ -18,5 +18,3 @@ class WeelezaApp extends StatelessWidget {
     );
   }
 }
-
-
