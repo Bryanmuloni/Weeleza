@@ -58,30 +58,6 @@ class Home extends StatelessWidget {
                           style: GoogleFonts.roboto(color: Colors.white),
                         )),
                   ),
-                  // Container(
-                  //   margin: const EdgeInsets.all(10.0),
-                  //   width: 1.5,
-                  //   color: Colors.white,
-                  //   height: 10.0,
-                  // ),
-                  // Row(
-                  //   children: [
-                  //     CircleAvatar(
-                  //       foregroundColor: Colors.white,
-                  //       backgroundColor: Colors.transparent,
-                  //       radius: 20.0,
-                  //       child: Icon(Icons.person_pin),
-                  //     ),
-                  //     Text('John', style: GoogleFonts.roboto()),
-                  //     SizedBox(
-                  //       width: 5.0,
-                  //     ),
-                  //     Text('Doe', style: GoogleFonts.roboto()),
-                  //     SizedBox(
-                  //       width: 5.0,
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ):PopupMenuButton(itemBuilder: (context)=> ["Language","Sign In"].map((e) => PopupMenuItem(child: Text(e)))
                   .toList()),

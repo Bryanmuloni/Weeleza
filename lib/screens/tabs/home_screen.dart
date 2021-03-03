@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:weeleza/constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<String> imageList = [
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: WeelezaColors.screenBackgroundColor,
       body: LayoutBuilder(
         builder: (context, constraints) {
           return ListView(

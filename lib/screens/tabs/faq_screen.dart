@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:weeleza/constants/colors.dart';
 import 'package:weeleza/models/faq.dart';
 
 class FaqScreen extends StatefulWidget {
@@ -16,7 +17,7 @@ class _FaqScreenState extends State<FaqScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: WeelezaColors.screenBackgroundColor,
       body: ListView(
         children: [
           Container(
@@ -85,6 +86,7 @@ class _FaqScreenState extends State<FaqScreen> {
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.only(right: 20.0, left: 20.0, bottom: 20),
             child: ListView.builder(
+              physics: ScrollPhysics(),
                 itemCount: _faqList.length,
                 shrinkWrap: true,
                 itemBuilder: (context, count) {
