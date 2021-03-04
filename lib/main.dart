@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
+import 'package:weeleza/constants/constants.dart';
+import 'package:weeleza/models/category.dart';
+import 'package:weeleza/models/delivery.dart';
 import 'package:weeleza/screens/home.dart';
-import 'package:weeleza/widgets/menu_item.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(DeliveryAdapter());
+  Hive.registerAdapter(ItemCategoryAdapter());
+  await Hive.openBox(Constants.deliveryBox);
   runApp(WeelezaApp());
 }
 
