@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weeleza/constants/colors.dart';
+import 'package:weeleza/screens/delivery/delivered.dart';
+import 'package:weeleza/screens/delivery/drafts.dart';
+import 'package:weeleza/screens/delivery/pickup_request.dart';
+import 'package:weeleza/screens/delivery/requests.dart';
+import 'package:weeleza/screens/delivery/returned.dart';
 import 'package:weeleza/utils/extendable_fab.dart';
 
 class DeliveryScreen extends StatefulWidget {
@@ -97,6 +102,11 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                                 label: Text("Request Pick Up"),
                                 onPressed: () {
                                   print("New Request");
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return PickUpRequest();
+                                      });
                                 },
                               ),
                             ),
@@ -139,18 +149,10 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                             child: IndexedStack(
                               index: _selectedIndex,
                               children: [
-                                Container(
-                                  child: Text("Drafts"),
-                                ),
-                                Container(
-                                  child: Text("Requests"),
-                                ),
-                                Container(
-                                  child: Text("Delivered"),
-                                ),
-                                Container(
-                                  child: Text("Returned"),
-                                ),
+                                DeliveryDrafts(),
+                                DeliveryRequests(),
+                                RequestsDelivered(),
+                                ReturnedDeliveries(),
                               ],
                             ),
                           ),

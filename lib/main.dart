@@ -10,7 +10,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(DeliveryAdapter());
   Hive.registerAdapter(ItemCategoryAdapter());
-  await Hive.openBox(Constants.deliveryBox);
+  await Hive.openBox<Delivery>(Constants.deliveryBox);
   runApp(WeelezaApp());
 }
 
