@@ -2,6 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
 import 'package:weeleza/constants/colors.dart';
 import 'package:weeleza/constants/constants.dart';
 import 'package:weeleza/constants/size_constants.dart';
@@ -22,6 +23,36 @@ class _PickUpRequestState extends State<PickUpRequest> {
   final _arrivalController = TextEditingController();
   final _destinationController = TextEditingController();
   ItemCategory _selectedCategory;
+  DateTime _departureDateTime;
+  String _departureDate;
+  DateTime _arrivalDateTime;
+  String _arrivalDate;
+
+  Future _selectDepartureDate() async {
+    _departureDateTime = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime.now(),
+    );
+    setState(() {
+      _departureDate = DateFormat('EEEE, dd/MM/yyyy hh:mm').format(_departureDateTime).toString();
+      _departureController.text = _departureDate == null ? DateTime.now() : _departureDate;
+    });
+  }
+
+  Future _selectArrivalDate() async {
+    _arrivalDateTime = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime.now(),
+    );
+    setState(() {
+      _arrivalDate = DateFormat('EEEE, dd/MM/yyyy hh:mm').format(_arrivalDateTime).toString();
+      _arrivalController.text = _arrivalDate == null ? DateTime.now() : _arrivalDate;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +62,9 @@ class _PickUpRequestState extends State<PickUpRequest> {
       body: LayoutBuilder(
         builder: (context, constraints) => Center(
           child: Container(
-            height: constraints.maxWidth <= 500 ? size.height/1.5 : size.height / 1.8,
+            height: constraints.maxWidth <= 500 ? size.height / 1.5 : size.height / 1.8,
             width: constraints.maxWidth <= 500 ? size.width : size.width / 2.2,
-            constraints: BoxConstraints(maxWidth: 800,minWidth: 500),
+            constraints: BoxConstraints(maxWidth: 800, minWidth: 500),
             child: Dialog(
               elevation: 5.0,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
@@ -160,6 +191,15 @@ class _PickUpRequestState extends State<PickUpRequest> {
                                         decoration: InputDecoration(
                                           labelText: 'Departure Time',
                                           border: OutlineInputBorder(),
+                                          suffixIcon: InkWell(
+                                            child: Icon(
+                                              Icons.date_range_rounded,
+                                              color: WeelezaColors.accentColor,
+                                            ),
+                                            onTap: () {
+                                              return _selectDepartureDate();
+                                            },
+                                          ),
                                         ),
                                         validator: (value) {
                                           if (value.isEmpty) {
@@ -178,6 +218,15 @@ class _PickUpRequestState extends State<PickUpRequest> {
                                         decoration: InputDecoration(
                                           labelText: 'Arrival Time',
                                           border: OutlineInputBorder(),
+                                          suffixIcon: InkWell(
+                                            child: Icon(
+                                              Icons.date_range_rounded,
+                                              color: WeelezaColors.accentColor,
+                                            ),
+                                            onTap: () {
+                                              return _selectArrivalDate();
+                                            },
+                                          ),
                                         ),
                                         validator: (value) {
                                           if (value.isEmpty) {
@@ -283,7 +332,8 @@ class _PickUpRequestState extends State<PickUpRequest> {
                                         itemSize: _sizeController.text,
                                         departureTime: _departureController.text,
                                         arrivalTime: _arrivalController.text,
-                                        destination: _destinationController.text);
+                                        destination: _destinationController.text,
+                                        deliveryStatus: "Draft");
 
                                     expenditureBox.add(delivery);
                                     Navigator.pop(context);

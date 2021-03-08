@@ -24,13 +24,14 @@ class DeliveryAdapter extends TypeAdapter<Delivery> {
       departureTime: fields[4] as String,
       arrivalTime: fields[5] as String,
       destination: fields[6] as String,
+      deliveryStatus: fields[7] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, Delivery obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.itemName)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class DeliveryAdapter extends TypeAdapter<Delivery> {
       ..writeByte(5)
       ..write(obj.arrivalTime)
       ..writeByte(6)
-      ..write(obj.destination);
+      ..write(obj.destination)
+      ..writeByte(7)
+      ..write(obj.deliveryStatus);
   }
 
   @override

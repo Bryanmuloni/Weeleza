@@ -19,6 +19,8 @@ class Delivery extends HiveObject {
   String arrivalTime;
   @HiveField(6)
   String destination;
+  @HiveField(7)
+  String deliveryStatus;
 
   Delivery(
       {this.itemName,
@@ -27,5 +29,5 @@ class Delivery extends HiveObject {
       this.itemSize,
       this.departureTime,
       this.arrivalTime,
-      this.destination});
+      this.destination,this.deliveryStatus});
 }
