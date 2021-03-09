@@ -62,9 +62,9 @@ class _PickUpRequestState extends State<PickUpRequest> {
       body: LayoutBuilder(
         builder: (context, constraints) => Center(
           child: Container(
-            height: constraints.maxWidth <= 500 ? size.height / 1.5 : size.height / 1.8,
-            width: constraints.maxWidth <= 500 ? size.width : size.width / 2.2,
-            constraints: BoxConstraints(maxWidth: 800, minWidth: 500),
+            height: size.height/ 1.8,
+            width: size.width / 2.2,
+            // constraints: BoxConstraints(maxWidth: 800, minWidth: 500),
             child: Dialog(
               elevation: 5.0,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
@@ -98,8 +98,8 @@ class _PickUpRequestState extends State<PickUpRequest> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
@@ -128,7 +128,7 @@ class _PickUpRequestState extends State<PickUpRequest> {
                                       SizedBox(
                                         width: 10,
                                       ),
-                                      Container()
+                                      Container(width: SizeConstants.inputFieldWidth,)
                                     ],
                                   ),
                                 ),
