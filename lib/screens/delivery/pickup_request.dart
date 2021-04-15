@@ -59,12 +59,12 @@ class _PickUpRequestState extends State<PickUpRequest> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: LayoutBuilder(
-        builder: (context, constraints) => Center(
+      body: Builder(
+        builder: (context) => Center(
           child: Container(
             height: size.height/ 1.8,
             width: size.width / 2.2,
-            // constraints: BoxConstraints(maxWidth: 800, minWidth: 500),
+            constraints: BoxConstraints(maxWidth: 800, minWidth: 500),
             child: Dialog(
               elevation: 5.0,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
@@ -100,6 +100,7 @@ class _PickUpRequestState extends State<PickUpRequest> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
